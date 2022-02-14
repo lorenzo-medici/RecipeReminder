@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecipeReminder</string>
+    <string name="add_ricetta">Aggiungi ricetta</string>
 </resources>
