@@ -2,10 +2,7 @@ package it.loremed.recipereminder.persistence
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteDatabase
 import it.loremed.recipereminder.model.Ricetta
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 @Database(
     entities = [Ricetta::class],
@@ -25,7 +22,6 @@ abstract class RicettaRoomDatabase : RoomDatabase() {
 
         fun getDatabase(
             context: Context,
-            scope: CoroutineScope
         ): RicettaRoomDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
@@ -34,9 +30,7 @@ abstract class RicettaRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     RicettaRoomDatabase::class.java,
                     "ricetta_database"
-                )
-                .addCallback(RicettaDatabaseCallback(scope))
-                .build()
+                ).build()
                 INSTANCE = instance
                 // return instance
                 instance
@@ -44,23 +38,4 @@ abstract class RicettaRoomDatabase : RoomDatabase() {
         }
 
     }
-
-    private class RicettaDatabaseCallback(
-        private val scope: CoroutineScope
-    ) : RoomDatabase.Callback() {
-
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-            INSTANCE?.let { database ->
-                scope.launch {
-                    populateDatabase(database.ricettaDao())
-                }
-            }
-        }
-
-        suspend fun populateDatabase(ricettaDao: RicettaDao) {
-            // Do nothing
-        }
-    }
-
 }
