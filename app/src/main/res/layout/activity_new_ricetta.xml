@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/nome_ricetta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:importantForAutofill="no"
+        android:inputType="textNoSuggestions"
+        android:minHeight="48dp"
+        android:text="@string/nome_ricetta"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/descrizione_ricetta"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="8dp"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:text="@string/descrizione_ricetta"
+        tools:ignore="LabelFor" />
+
+    <RadioGroup
+        android:id="@+id/tipo_choice_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tipi_di_ricetta" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:background="@color/purple_500"
+        android:text="@string/button_save"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel"
+        android:gravity="bottom"
+        android:layout_weight="0"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

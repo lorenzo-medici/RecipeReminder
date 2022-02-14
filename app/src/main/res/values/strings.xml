@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">RecipeReminder</string>
     <string name="add_ricetta">Aggiungi ricetta</string>
+    <string name="hint_ricetta">Ricetta…</string>
+    <string name="button_save">Salva</string>
+    <string name="empty_not_saved">Ricetta non salvata perché non hai selezionato il tipo.</string>
+    <string name="descrizione_ricetta">Descrizione ricetta</string>
+    <string name="nome_ricetta">Nome ricetta</string>
+    <string name="tipi_di_ricetta">Tipi di ricetta:</string>
 </resources>
