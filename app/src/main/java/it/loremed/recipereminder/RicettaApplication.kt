@@ -10,6 +10,6 @@ class RicettaApplication : Application() {
 
     val applicationScope = CoroutineScope(SupervisorJob())
 
-    val database by lazy { RicettaRoomDatabase.getDatabase(this, applicationScope) }
+    val database by lazy { RicettaRoomDatabase.getDatabase(this) }
     val repository by lazy { RicettaRepository(database.ricettaDao())}
 }

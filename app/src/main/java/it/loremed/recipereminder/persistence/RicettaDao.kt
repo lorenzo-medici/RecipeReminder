@@ -11,11 +11,11 @@ interface RicettaDao {
     fun getAll(): Flow<List<Ricetta>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(ricetta: Ricetta)
+    suspend fun insert(ricetta: Ricetta)
 
     @Delete
-    fun delete(ricetta: Ricetta)
+    suspend fun delete(ricetta: Ricetta)
 
     @Update
-    fun update(ricetta: Ricetta)
+    suspend fun update(ricetta: Ricetta)
 }
