@@ -7,4 +7,6 @@
     <string name="descrizione_ricetta">Descrizione ricetta</string>
     <string name="nome_ricetta">Nome ricetta</string>
     <string name="tipi_di_ricetta">Tipi di ricetta:</string>
+    <string name="button_elimina">Elimina ricetta</string>
+    <string name="button_esegui">Esegui ricetta</string>
 </resources>
