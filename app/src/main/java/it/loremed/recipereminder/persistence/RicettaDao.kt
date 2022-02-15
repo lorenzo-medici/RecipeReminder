@@ -16,6 +16,6 @@ interface RicettaDao {
     @Delete
     fun delete(ricetta: Ricetta)
 
-    @Query("SELECT * FROM ricetta WHERE tipo = (:tipo)")
-    fun getByTipo(tipo: Tipo): List<Ricetta>
+    @Update
+    fun update(ricetta: Ricetta)
 }

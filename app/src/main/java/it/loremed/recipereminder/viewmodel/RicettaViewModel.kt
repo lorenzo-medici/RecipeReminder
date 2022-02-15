@@ -22,6 +22,10 @@ class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() 
         repository.deleteRicetta(ricetta)
     }
 
+    fun update(ricetta: Ricetta) = viewModelScope.launch {
+        repository.updateRicetta(ricetta)
+    }
+
     class RicettaViewModelFactory(private val repository: RicettaRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(RicettaViewModel::class.java)) {

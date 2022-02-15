@@ -18,7 +18,7 @@ class Ricetta : Serializable {
 
     override fun equals(other: Any?): Boolean {
         return if (other is Ricetta) {
-            id == other.id
+            id == other.id && nome == other.nome && descrizione == other.descrizione && tipo == other.tipo && ultimoUtilizzo == other.ultimoUtilizzo
         } else {
             false
         }
