@@ -8,24 +8,34 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import it.loremed.recipereminder.EDIT_RESULT_CODE
+import it.loremed.recipereminder.EXECUTE_RESULT_CODE
 import it.loremed.recipereminder.R
+import it.loremed.recipereminder.REMOVE_RESULT_CODE
 import it.loremed.recipereminder.model.Ricetta
 import it.loremed.recipereminder.model.Tipo
 
-
-class NewRicettaActivity : AppCompatActivity() {
+class ExistingRicettaActivity : AppCompatActivity() {
 
     private lateinit var editRicettaName: EditText
     private lateinit var editRicettaDescrizione: EditText
     private lateinit var editRicettaTipiContainer: RadioGroup
 
+    private lateinit var ricettaMostrata: Ricetta
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_ricetta)
+        setContentView(R.layout.activity_existing_ricetta)
 
         editRicettaName = findViewById(R.id.nome_ricetta)
         editRicettaDescrizione = findViewById(R.id.descrizione_ricetta)
         editRicettaTipiContainer = findViewById(R.id.tipo_choice_container)
+
+        val bundle = intent.extras
+
+        if (bundle != null) {
+            ricettaMostrata = bundle.get("ricetta") as Ricetta
+        }
 
         val options = Tipo.values().map(Tipo::toString)
 
@@ -37,31 +47,55 @@ class NewRicettaActivity : AppCompatActivity() {
                 RadioGroup.LayoutParams.MATCH_PARENT,
                 RadioGroup.LayoutParams.WRAP_CONTENT
             )
+            if (rb.text == ricettaMostrata.tipo.toString())
+                rb.isChecked = true
+
             editRicettaTipiContainer.addView(rb)
         }
 
-        val button = findViewById<Button>(R.id.button_save)
-        button.setOnClickListener {
 
-            val id = editRicettaTipiContainer.checkedRadioButtonId
+        editRicettaName.setText(ricettaMostrata.nome)
+        editRicettaDescrizione.setText(ricettaMostrata.descrizione)
 
-            if (id == -1 || editRicettaName.text.isEmpty()) {
-                Toast.makeText(this, "Seleziona un tipo di ricetta!", Toast.LENGTH_SHORT).show()
+        val saveButton = findViewById<Button>(R.id.button_save)
+        saveButton.setOnClickListener {
+
+            if (editRicettaName.text.isEmpty()) {
+                Toast.makeText(this, "Inserisci il nome della ricetta!", Toast.LENGTH_SHORT).show()
             } else {
                 val replyIntent = Intent()
-                val nome = editRicettaName.text.toString()
-                val descrizione = editRicettaDescrizione.text.toString()
-                val tipo = Tipo.valueOf(
+                val id = editRicettaTipiContainer.checkedRadioButtonId
+
+                ricettaMostrata.nome = editRicettaName.text.toString()
+                ricettaMostrata.descrizione = editRicettaDescrizione.text.toString()
+                ricettaMostrata.tipo = Tipo.valueOf(
                     (findViewById<RadioButton>(id).text as String).uppercase().replace(' ', '_')
                 )
-                replyIntent.putExtra(EXTRA_REPLY, Ricetta(nome, descrizione, tipo))
-                setResult(Activity.RESULT_OK, replyIntent)
+                replyIntent.putExtra(EXTRA_REPLY, ricettaMostrata)
+                setResult(Activity.RESULT_FIRST_USER + EDIT_RESULT_CODE, replyIntent)
                 finish()
             }
         }
 
-        val view = findViewById<LinearLayout>(R.id.new_ricetta_linearlayout)
+        val executeButton = findViewById<Button>(R.id.button_esegui)
+        executeButton.setOnClickListener {
+            val replyIntent = Intent()
 
+            replyIntent.putExtra(EXTRA_REPLY, ricettaMostrata)
+            setResult(Activity.RESULT_FIRST_USER + EXECUTE_RESULT_CODE, replyIntent)
+            finish()
+        }
+
+        val removeButton = findViewById<Button>(R.id.button_elimina)
+        removeButton.setOnClickListener {
+            val replyIntent = Intent()
+
+            replyIntent.putExtra(EXTRA_REPLY, ricettaMostrata)
+            setResult(Activity.RESULT_FIRST_USER + REMOVE_RESULT_CODE, replyIntent)
+            finish()
+        }
+
+        val view = findViewById<LinearLayout>(R.id.existing_ricetta_linearlayout)
         hideKeyboardOnOutSideTouch(view)
 
     }
@@ -91,5 +125,4 @@ class NewRicettaActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_REPLY = "com.example.android.ricettalistsql.REPLY"
     }
-
 }

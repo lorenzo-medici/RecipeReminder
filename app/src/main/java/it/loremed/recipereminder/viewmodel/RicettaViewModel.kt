@@ -1,13 +1,9 @@
 package it.loremed.recipereminder.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import it.loremed.recipereminder.model.Ricetta
 import it.loremed.recipereminder.persistence.RicettaRepository
-import java.lang.IllegalArgumentException
 import kotlinx.coroutines.launch
-import androidx.lifecycle.*
 
 
 class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() {
@@ -26,7 +22,8 @@ class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() 
         repository.updateRicetta(ricetta)
     }
 
-    class RicettaViewModelFactory(private val repository: RicettaRepository) : ViewModelProvider.Factory {
+    class RicettaViewModelFactory(private val repository: RicettaRepository) :
+        ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(RicettaViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")

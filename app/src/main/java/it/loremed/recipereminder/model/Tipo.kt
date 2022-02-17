@@ -6,6 +6,6 @@ enum class Tipo {
 
     override fun toString(): String {
         val toPrint = this.name
-        return toPrint.substring(0,1) + toPrint.substring(1).lowercase().replace('_', ' ')
+        return toPrint.substring(0, 1) + toPrint.substring(1).lowercase().replace('_', ' ')
     }
 }

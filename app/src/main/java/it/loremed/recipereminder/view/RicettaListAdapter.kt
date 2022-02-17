@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import it.loremed.recipereminder.R
 import it.loremed.recipereminder.model.Ricetta
 
-class RicettaListAdapter : ListAdapter<Ricetta, RicettaListAdapter.RicettaViewHolder>(RicettasComparator()) {
+class RicettaListAdapter(private val onItemClicked: (position: Int) -> Unit) :
+    ListAdapter<Ricetta, RicettaListAdapter.RicettaViewHolder>(RicettasComparator()) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
-        return RicettaViewHolder.create(parent)
+        return RicettaViewHolder.create(parent, onItemClicked)
     }
 
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
@@ -21,19 +23,32 @@ class RicettaListAdapter : ListAdapter<Ricetta, RicettaListAdapter.RicettaViewHo
         holder.bind(current.nome)
     }
 
-    class RicettaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class RicettaViewHolder(itemView: View, private val onItemClicked: (position: Int) -> Unit) :
+        RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val ricettaItemView: TextView = itemView.findViewById(R.id.textView)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bind(text: String?) {
             ricettaItemView.text = text
         }
 
         companion object {
-            fun create(parent: ViewGroup): RicettaViewHolder {
+            fun create(
+                parent: ViewGroup,
+                onItemClicked: (position: Int) -> Unit
+            ): RicettaViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recyclerview_item, parent, false)
-                return RicettaViewHolder(view)
+                return RicettaViewHolder(view, onItemClicked)
             }
+        }
+
+        override fun onClick(p0: View?) {
+            val position = bindingAdapterPosition
+            onItemClicked(position)
         }
     }
 

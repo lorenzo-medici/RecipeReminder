@@ -9,9 +9,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RecipeReminder">
+        android:theme="@style/Theme.AppCompat">
         <activity
             android:name=".view.NewRicettaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ExistingRicettaActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
