@@ -9,6 +9,9 @@ interface RicettaDao {
     @Query("SELECT * FROM ricetta ORDER BY ultimoUtilizzo ASC")
     fun getAll(): Flow<List<Ricetta>>
 
+    @Query("SELECT * FROM ricetta WHERE tipo LIKE :tipoQuery ORDER BY ultimoUtilizzo ASC")
+    fun getByTipo(tipoQuery: String): Flow<List<Ricetta>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(ricetta: Ricetta)
 

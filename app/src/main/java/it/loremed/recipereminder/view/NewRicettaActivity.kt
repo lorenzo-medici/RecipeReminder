@@ -27,7 +27,7 @@ class NewRicettaActivity : AppCompatActivity() {
         editRicettaDescrizione = findViewById(R.id.descrizione_ricetta)
         editRicettaTipiContainer = findViewById(R.id.tipo_choice_container)
 
-        val options = Tipo.values().map(Tipo::toString)
+        val options = Tipo.values().map(Tipo::printable)
 
         for (i in options.indices) {
             val rb = RadioButton(this)
@@ -51,9 +51,8 @@ class NewRicettaActivity : AppCompatActivity() {
                 val replyIntent = Intent()
                 val nome = editRicettaName.text.toString()
                 val descrizione = editRicettaDescrizione.text.toString()
-                val tipo = Tipo.valueOf(
-                    (findViewById<RadioButton>(id).text as String).uppercase().replace(' ', '_')
-                )
+                val tipo = Tipo.fromPrintable(findViewById<RadioButton>(id).text as String)
+
                 replyIntent.putExtra(EXTRA_REPLY, Ricetta(nome, descrizione, tipo))
                 setResult(Activity.RESULT_OK, replyIntent)
                 finish()

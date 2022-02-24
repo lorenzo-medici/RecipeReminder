@@ -1,5 +1,6 @@
 package it.loremed.recipereminder.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import it.loremed.recipereminder.model.Ricetta
 import it.loremed.recipereminder.persistence.RicettaRepository
@@ -8,7 +9,14 @@ import kotlinx.coroutines.launch
 
 class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() {
 
-    val allRecipes: LiveData<List<Ricetta>> = repository.ricette.asLiveData()
+    var allRecipesFiltered: LiveData<List<Ricetta>>
+    private var filter = MutableLiveData("%")
+
+    init {
+        allRecipesFiltered = Transformations.switchMap(filter) { filter ->
+            repository.getByTipo(filter).asLiveData()
+        }
+    }
 
     fun insert(ricetta: Ricetta) = viewModelScope.launch {
         repository.addRicetta(ricetta)
@@ -20,6 +28,16 @@ class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() 
 
     fun update(ricetta: Ricetta) = viewModelScope.launch {
         repository.updateRicetta(ricetta)
+    }
+
+    fun setFilter(newFilter: String) {
+        val f = when {
+            newFilter.isEmpty() -> "%"
+            else -> "%$newFilter%"
+        }
+
+        Log.d("FILTERING", "Filter $f applied")
+        filter.postValue(f) // apply the filter
     }
 
     class RicettaViewModelFactory(private val repository: RicettaRepository) :

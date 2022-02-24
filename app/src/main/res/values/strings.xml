@@ -9,4 +9,7 @@
     <string name="tipi_di_ricetta">Tipi di ricetta:</string>
     <string name="button_elimina">Elimina ricetta</string>
     <string name="button_esegui">Esegui ricetta</string>
+    <string name="filter_ricetta_type">Filtra il tipo di ricetta</string>
+    <string name="all_recipe_types">Tutti</string>
+    <string name="type_text_view">Tipo di ricetta filtrata</string>
 </resources>

@@ -37,7 +37,7 @@ class ExistingRicettaActivity : AppCompatActivity() {
             ricettaMostrata = bundle.get("ricetta") as Ricetta
         }
 
-        val options = Tipo.values().map(Tipo::toString)
+        val options = Tipo.values().map(Tipo::printable)
 
         for (i in options.indices) {
             val rb = RadioButton(this)
@@ -47,7 +47,7 @@ class ExistingRicettaActivity : AppCompatActivity() {
                 RadioGroup.LayoutParams.MATCH_PARENT,
                 RadioGroup.LayoutParams.WRAP_CONTENT
             )
-            if (rb.text == ricettaMostrata.tipo.toString())
+            if (rb.text == ricettaMostrata.tipo.printable)
                 rb.isChecked = true
 
             editRicettaTipiContainer.addView(rb)
@@ -68,9 +68,8 @@ class ExistingRicettaActivity : AppCompatActivity() {
 
                 ricettaMostrata.nome = editRicettaName.text.toString()
                 ricettaMostrata.descrizione = editRicettaDescrizione.text.toString()
-                ricettaMostrata.tipo = Tipo.valueOf(
-                    (findViewById<RadioButton>(id).text as String).uppercase().replace(' ', '_')
-                )
+                ricettaMostrata.tipo = Tipo.fromPrintable(findViewById<RadioButton>(id).text as String)
+
                 replyIntent.putExtra(EXTRA_REPLY, ricettaMostrata)
                 setResult(Activity.RESULT_FIRST_USER + EDIT_RESULT_CODE, replyIntent)
                 finish()

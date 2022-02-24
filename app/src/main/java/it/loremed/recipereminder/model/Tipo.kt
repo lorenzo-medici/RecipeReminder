@@ -1,11 +1,21 @@
 package it.loremed.recipereminder.model
 
-enum class Tipo {
+enum class Tipo(val printable: String, val plural: String) {
 
-    PRIMO, SECONDO, CONTORNO, PIATTO_UNICO, DOLCE, SNACK;
+    PRIMO("Primo", "Primi"), SECONDO("Secondo", "Secondi"), CONTORNO(
+        "Contorno",
+        "Contorni"
+    ),
+    PIATTO_UNICO("Piatto unico", "Piatti unici"), DOLCE("Dolce", "Dolci"), SNACK("Snack", "Snack");
 
-    override fun toString(): String {
-        val toPrint = this.name
-        return toPrint.substring(0, 1) + toPrint.substring(1).lowercase().replace('_', ' ')
+    companion object {
+
+        fun fromPrintable(printable: String): Tipo {
+            return values().filter { it.printable == printable }[0]
+        }
+
+        fun fromPlural(plural: String): Tipo {
+            return values().filter { it.plural == plural }[0]
+        }
     }
 }

@@ -26,4 +26,10 @@ class RicettaRepository(private val ricettaDao: RicettaDao) {
     suspend fun deleteRicetta(ricetta: Ricetta) {
         ricettaDao.delete(ricetta)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    fun getByTipo(tipo: String): Flow<List<Ricetta>> {
+        return ricettaDao.getByTipo(tipo)
+    }
 }
