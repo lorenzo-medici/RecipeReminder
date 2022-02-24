@@ -1,4 +1,4 @@
-package it.loremed.recipereminder.view
+package it.loremed.recipereminder.view.ricette
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import it.loremed.recipereminder.R
-import it.loremed.recipereminder.model.Ricetta
+import it.loremed.recipereminder.model.ricette.Ricetta
 
 class RicettaListAdapter(private val onItemClicked: (position: Int) -> Unit) :
     ListAdapter<Ricetta, RicettaListAdapter.RicettaViewHolder>(RicettasComparator()) {

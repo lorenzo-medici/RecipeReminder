@@ -1,4 +1,4 @@
-package it.loremed.recipereminder.view
+package it.loremed.recipereminder.view.ricette
 
 import android.app.Activity
 import android.content.Intent
@@ -9,8 +9,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import it.loremed.recipereminder.R
-import it.loremed.recipereminder.model.Ricetta
-import it.loremed.recipereminder.model.Tipo
+import it.loremed.recipereminder.model.ricette.Ricetta
+import it.loremed.recipereminder.model.ricette.Tipo
 
 
 class NewRicettaActivity : AppCompatActivity() {

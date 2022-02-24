@@ -1,11 +1,11 @@
-package it.loremed.recipereminder.persistence
+package it.loremed.recipereminder.persistence.ricette
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import it.loremed.recipereminder.model.Ricetta
+import it.loremed.recipereminder.model.ricette.Ricetta
 
 @Database(
     entities = [Ricetta::class],

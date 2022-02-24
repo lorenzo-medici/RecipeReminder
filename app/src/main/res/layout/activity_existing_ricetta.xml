@@ -15,7 +15,7 @@
         android:layout_margin="8dp"
         android:hint="@string/nome_ricetta"
         android:importantForAutofill="no"
-        android:inputType="textNoSuggestions"
+        android:inputType="textNoSuggestions|textCapSentences"
         android:minHeight="48dp"
         tools:ignore="LabelFor,TextContrastCheck" />
 
@@ -26,7 +26,7 @@
         android:layout_margin="8dp"
         android:hint="@string/descrizione_ricetta"
         android:importantForAutofill="no"
-        android:inputType="textMultiLine|textNoSuggestions"
+        android:inputType="textMultiLine|textNoSuggestions|textCapSentences"
         tools:ignore="LabelFor,TextContrastCheck" />
 
     <RadioGroup

@@ -1,4 +1,4 @@
-package it.loremed.recipereminder.view
+package it.loremed.recipereminder.view.ricette
 
 import android.app.Activity
 import android.content.Intent
@@ -15,15 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import it.loremed.recipereminder.*
-import it.loremed.recipereminder.model.Ricetta
-import it.loremed.recipereminder.model.Tipo
-import it.loremed.recipereminder.viewmodel.RicettaViewModel
+import it.loremed.recipereminder.model.ricette.Ricetta
+import it.loremed.recipereminder.model.ricette.Tipo
+import it.loremed.recipereminder.viewmodel.ricette.RicettaViewModel
 
 
 class MainActivity : AppCompatActivity() {
 
     private val ricettaViewModel: RicettaViewModel by viewModels {
-        RicettaViewModel.RicettaViewModelFactory((application as RicettaApplication).repository)
+        RicettaViewModel.RicettaViewModelFactory((application as RicettaApplication).ricettaRepository)
     }
 
     private var newRicettaResultLauncher =

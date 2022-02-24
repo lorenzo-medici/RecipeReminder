@@ -1,4 +1,4 @@
-package it.loremed.recipereminder.persistence
+package it.loremed.recipereminder.persistence.ricette
 
 import androidx.room.TypeConverter
 import java.util.*

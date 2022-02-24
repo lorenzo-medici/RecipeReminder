@@ -1,4 +1,4 @@
-package it.loremed.recipereminder.model
+package it.loremed.recipereminder.model.ricette
 
 enum class Tipo(val printable: String, val plural: String) {
 

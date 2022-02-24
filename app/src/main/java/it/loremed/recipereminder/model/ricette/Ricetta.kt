@@ -1,4 +1,4 @@
-package it.loremed.recipereminder.model
+package it.loremed.recipereminder.model.ricette
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

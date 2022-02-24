@@ -1,7 +1,7 @@
-package it.loremed.recipereminder.persistence
+package it.loremed.recipereminder.persistence.ricette
 
 import androidx.room.*
-import it.loremed.recipereminder.model.Ricetta
+import it.loremed.recipereminder.model.ricette.Ricetta
 import kotlinx.coroutines.flow.Flow
 
 @Dao

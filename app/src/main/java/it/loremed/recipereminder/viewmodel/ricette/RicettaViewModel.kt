@@ -1,9 +1,9 @@
-package it.loremed.recipereminder.viewmodel
+package it.loremed.recipereminder.viewmodel.ricette
 
 import android.util.Log
 import androidx.lifecycle.*
-import it.loremed.recipereminder.model.Ricetta
-import it.loremed.recipereminder.persistence.RicettaRepository
+import it.loremed.recipereminder.model.ricette.Ricetta
+import it.loremed.recipereminder.persistence.ricette.RicettaRepository
 import kotlinx.coroutines.launch
 
 
