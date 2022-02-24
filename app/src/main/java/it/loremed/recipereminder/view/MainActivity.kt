@@ -145,6 +145,5 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-/* TODO     - Spostare bottone filtro nella action bar
-            - Implementare lista della spesa
+/* TODO     - Implementare lista della spesa
  */
