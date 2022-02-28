@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = RicettaListAdapter { position -> onListItemClick(position)}
+        val adapter = RicettaListAdapter { position -> onListItemClick(position) }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -97,27 +97,21 @@ class MainActivity : AppCompatActivity() {
         filterFab.setOnClickListener {
             val popupMenu = PopupMenu(this, filterFab)
             popupMenu.menuInflater.inflate(R.menu.type_choose_menu, popupMenu.menu)
-                       popupMenu.setOnMenuItemClickListener { item ->
+            popupMenu.setOnMenuItemClickListener { item ->
 
-                           Log.d("FILTERING", "Item title selected ${item.title}")
+                Log.d("FILTERING", "Item title selected ${item.title}")
 
-                           val filterString: String
-                           val titleString: String
+                val titleString: String = if (item.title.toString() == getString(R.string.all_recipe_types)) {
+                    ""
+                } else {
+                    item.title.toString()
+                }
 
-                           if (item.title.toString() == getString(R.string.all_recipe_types)) {
-                               filterString = ""
-                               titleString = ""
-                           } else {
-                               val tipo = Tipo.fromPlural(item.title.toString())
-                               filterString = tipo.toString()
-                               titleString = tipo.plural
-                           }
+                textViewType!!.text = titleString
+                ricettaViewModel.setFilter(titleString)
 
-                           textViewType!!.text = titleString
-                           ricettaViewModel.setFilter(filterString)
-
-                           true
-                       }
+                true
+            }
             val options = Tipo.values().map(Tipo::plural)
 
             for (i in options.indices) {
