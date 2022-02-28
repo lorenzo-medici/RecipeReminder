@@ -12,12 +12,16 @@ class Ricetta : Serializable {
 
     @PrimaryKey
     var id: Long = System.currentTimeMillis()
+
     @ColumnInfo(name = "nome")
     var nome: String
+
     @ColumnInfo(name = "descrizione")
     var descrizione: String
+
     @ColumnInfo(name = "tipo")
     var tipo: Tipo
+
     @ColumnInfo(name = "ultimoUtilizzo")
     var ultimoUtilizzo: Date = Date()
 
