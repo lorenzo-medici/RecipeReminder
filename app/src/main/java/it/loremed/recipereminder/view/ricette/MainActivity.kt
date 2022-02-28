@@ -101,11 +101,12 @@ class MainActivity : AppCompatActivity() {
 
                 Log.d("FILTERING", "Item title selected ${item.title}")
 
-                val titleString: String = if (item.title.toString() == getString(R.string.all_recipe_types)) {
-                    ""
-                } else {
-                    item.title.toString()
-                }
+                val titleString: String =
+                    if (item.title.toString() == getString(R.string.all_recipe_types)) {
+                        ""
+                    } else {
+                        item.title.toString()
+                    }
 
                 textViewType!!.text = titleString
                 ricettaViewModel.setFilter(titleString)

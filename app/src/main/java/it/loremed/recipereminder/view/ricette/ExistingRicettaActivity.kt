@@ -68,7 +68,8 @@ class ExistingRicettaActivity : AppCompatActivity() {
 
                 ricettaMostrata.nome = editRicettaName.text.toString()
                 ricettaMostrata.descrizione = editRicettaDescrizione.text.toString()
-                ricettaMostrata.tipo = Tipo.fromPrintable(findViewById<RadioButton>(id).text as String)
+                ricettaMostrata.tipo =
+                    Tipo.fromPrintable(findViewById<RadioButton>(id).text as String)
 
                 replyIntent.putExtra(EXTRA_REPLY, ricettaMostrata)
                 setResult(Activity.RESULT_FIRST_USER + EDIT_RESULT_CODE, replyIntent)
