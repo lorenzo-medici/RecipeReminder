@@ -12,6 +12,7 @@
     <string name="filter_ricetta_type">Filtra il tipo di ricetta</string>
     <string name="all_recipe_types">Tutti</string>
     <string name="type_text_view">Tipo di ricetta filtrata</string>
-    <string name="add_item">Aggiungi oggetto alla lista della spesa</string>
-    <string name="hint_nuovo_oggetto">Oggetto della lista</string>
+    <string name="bought_item">Comprato un elemento</string>
+    <string name="hint_nuovo_oggetto">Nuovo oggetto</string>
+    <string name="add_lista_item">Aggiungi un oggetto alla lista della spesa</string>
 </resources>

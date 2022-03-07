@@ -25,7 +25,7 @@ class ItemLista : Serializable {
 
     override fun equals(other: Any?): Boolean {
         return if (other is ItemLista) {
-            id == other.id && oggetto == other.oggetto
+            oggetto == other.oggetto
         } else {
             false
         }
@@ -33,5 +33,9 @@ class ItemLista : Serializable {
 
     override fun hashCode(): Int {
         return id.hashCode()
+    }
+
+    override fun toString(): String {
+        return oggetto
     }
 }

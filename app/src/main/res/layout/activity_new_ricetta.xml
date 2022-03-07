@@ -17,7 +17,7 @@
         android:importantForAutofill="no"
         android:inputType="textNoSuggestions|textCapSentences"
         android:minHeight="48dp"
-        tools:ignore="LabelFor,TextContrastCheck"/>
+        tools:ignore="LabelFor,TextContrastCheck" />
 
     <EditText
         android:id="@+id/descrizione_ricetta"

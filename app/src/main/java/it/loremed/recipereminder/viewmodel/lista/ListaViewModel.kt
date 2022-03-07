@@ -8,10 +8,12 @@ import kotlinx.coroutines.launch
 
 class ListaViewModel(private val repository: ListaRepository) : ViewModel() {
 
-    var alItems: LiveData<List<ItemLista>> = repository.items.asLiveData()
+    var allItems: LiveData<List<ItemLista>> = repository.items.asLiveData()
 
     fun insert(item: ItemLista) = viewModelScope.launch {
-        repository.addItemLista(item)
+        if (allItems.value?.contains(item) == false) {
+            repository.addItemLista(item)
+        }
     }
 
     fun delete(item: ItemLista) = viewModelScope.launch {
@@ -22,7 +24,7 @@ class ListaViewModel(private val repository: ListaRepository) : ViewModel() {
         repository.editItemLista(item)
     }
 
-    class ItemListaViewModelFactory(private val repository: ListaRepository) :
+    class ListaViewModelFactory(private val repository: ListaRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ListaViewModel::class.java)) {

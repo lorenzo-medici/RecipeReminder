@@ -10,11 +10,11 @@ interface ListaDao {
     fun getAll(): Flow<List<ItemLista>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(ricetta: ItemLista)
+    suspend fun insert(itemLista: ItemLista)
 
     @Delete
-    suspend fun delete(ricetta: ItemLista)
+    suspend fun delete(itemLista: ItemLista)
 
     @Update
-    suspend fun update(ricetta: ItemLista)
+    suspend fun update(itemLista: ItemLista)
 }

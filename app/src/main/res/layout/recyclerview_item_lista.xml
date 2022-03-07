@@ -10,19 +10,21 @@
     <TextView
         android:id="@+id/textview_lista"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:ellipsize="none"
         android:padding="8dp"
+        android:scrollHorizontally="false"
         android:textSize="10pt" />
 
     <ImageButton
         android:id="@+id/imagebutton_lista"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="end|center_vertical"
         android:layout_weight="0"
         android:backgroundTint="@color/cardview_dark_background"
-        android:contentDescription="@string/add_item"
+        android:contentDescription="@string/bought_item"
         android:src="@drawable/ic_baseline_check_24"
         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 

@@ -1,12 +1,15 @@
 package it.loremed.recipereminder.view.ricette
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
@@ -17,10 +20,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import it.loremed.recipereminder.*
 import it.loremed.recipereminder.model.ricette.Ricetta
 import it.loremed.recipereminder.model.ricette.Tipo
+import it.loremed.recipereminder.view.SimpleGestureFilter
+import it.loremed.recipereminder.view.lista.ListaActivity
 import it.loremed.recipereminder.viewmodel.ricette.RicettaViewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SimpleGestureFilter.SimpleGestureListener {
 
     private val ricettaViewModel: RicettaViewModel by viewModels {
         RicettaViewModel.RicettaViewModelFactory((application as RicettaApplication).ricettaRepository)
@@ -62,8 +67,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    private lateinit var detector: SimpleGestureFilter
     private var textViewType: TextView? = null
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -121,8 +128,29 @@ class MainActivity : AppCompatActivity() {
 
             popupMenu.show()
         }
-    }
 
+        detector = SimpleGestureFilter(this, this)
+
+        /*recyclerView.setOnTouchListener(object : OnSwipeTouchListener(this@MainActivity) {
+            override fun onSwipeTop() {
+                Log.d("SWIPING", "Top")
+            }
+
+            override fun onSwipeBottom() {
+                Log.d("SWIPING", "Bottom")
+            }
+
+            override fun onSwipeLeft() {
+                Log.d("SWIPING", "Left")
+                startActivity(Intent(this@MainActivity, ListaActivity::class.java))
+                this@MainActivity.finish()
+            }
+
+            override fun onSwipeRight() {
+                Log.d("SWIPING", "Right")
+            }
+        })*/
+    }
 
     private fun onListItemClick(position: Int) {
 
@@ -138,7 +166,27 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("ricetta", ricettaSelezionata)
         existingRicettaResultLauncher.launch(intent)
     }
-}
 
-/* TODO     - Implementare lista della spesa
- */
+    override fun onSwipe(direction: Int) {
+        when (direction) {
+            SimpleGestureFilter.SWIPE_LEFT -> {
+                startActivity(Intent(this@MainActivity, ListaActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                this@MainActivity.finish()
+            }
+            else -> {
+                // Do nothing
+            }
+        }
+    }
+
+    override fun onDoubleTap() {
+        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun dispatchTouchEvent(me: MotionEvent?): Boolean {
+        this.detector.onTouchEvent(me!!)
+        return super.dispatchTouchEvent(me)
+    }
+
+}

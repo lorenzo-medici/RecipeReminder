@@ -8,7 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerview_lista"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="@dimen/button_margin"
@@ -28,7 +28,7 @@
         android:layout_margin="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="@string/add_item"
+        android:contentDescription="@string/add_lista_item"
         android:src="@drawable/ic_baseline_add_24"
         android:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"

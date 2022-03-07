@@ -38,7 +38,7 @@ class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() 
     }
 
     fun setFilter(newFilter: String) {
-        filter.postValue( if (newFilter != "") Tipo.fromPlural(newFilter) else null )
+        filter.postValue(if (newFilter != "") Tipo.fromPlural(newFilter) else null)
         Log.d("FILTERING", "Filter $newFilter applied")
     }
 

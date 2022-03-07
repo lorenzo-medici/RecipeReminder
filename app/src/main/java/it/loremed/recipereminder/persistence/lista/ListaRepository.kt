@@ -11,19 +11,20 @@ class ListaRepository(private val listaDao: ListaDao) {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun addItemLista(ricetta: ItemLista) {
-        listaDao.insert(ricetta)
+    suspend fun addItemLista(itemLista: ItemLista) {
+        listaDao.insert(itemLista)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun editItemLista(ricetta: ItemLista) {
-        listaDao.update(ricetta)
+    suspend fun editItemLista(itemLista: ItemLista) {
+        listaDao.update(itemLista)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun deleteItemLista(ricetta: ItemLista) {
-        listaDao.delete(ricetta)
+    suspend fun deleteItemLista(itemLista: ItemLista) {
+        listaDao.delete(itemLista)
     }
+
 }
