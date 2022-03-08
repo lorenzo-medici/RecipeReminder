@@ -2,9 +2,16 @@ package it.loremed.recipereminder.view.ricette
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.AdaptiveIconDrawable
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.widget.PopupMenu
@@ -14,6 +21,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.core.content.pm.ShortcutInfoCompat
+import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.graphics.drawable.IconCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -131,25 +144,26 @@ class MainActivity : AppCompatActivity(), SimpleGestureFilter.SimpleGestureListe
 
         detector = SimpleGestureFilter(this, this)
 
-        /*recyclerView.setOnTouchListener(object : OnSwipeTouchListener(this@MainActivity) {
-            override fun onSwipeTop() {
-                Log.d("SWIPING", "Top")
-            }
+        val intent = Intent(this, ListaActivity::class.java)
+        intent.putExtra("isShortcut", "true")
+        intent.action = Intent.ACTION_VIEW
 
-            override fun onSwipeBottom() {
-                Log.d("SWIPING", "Bottom")
-            }
+        val bitmap = convertAppIconDrawableToBitmap(
+            this,
+            AppCompatResources.getDrawable(this, R.mipmap.ic_shortcut_icon)!!
+        )
 
-            override fun onSwipeLeft() {
-                Log.d("SWIPING", "Left")
-                startActivity(Intent(this@MainActivity, ListaActivity::class.java))
-                this@MainActivity.finish()
-            }
 
-            override fun onSwipeRight() {
-                Log.d("SWIPING", "Right")
-            }
-        })*/
+        val shortcut = ShortcutInfoCompat.Builder(this, "id1")
+            .setShortLabel("Aggiungi")
+            .setLongLabel("Aggiungi un oggetto")
+            .setDisabledMessage("Disattivato")
+            .setIcon(IconCompat.createWithAdaptiveBitmap(bitmap))
+            .setIntent(intent)
+            .build()
+
+        ShortcutManagerCompat.pushDynamicShortcut(this, shortcut)
+
     }
 
     private fun onListItemClick(position: Int) {
@@ -188,5 +202,33 @@ class MainActivity : AppCompatActivity(), SimpleGestureFilter.SimpleGestureListe
         this.detector.onTouchEvent(me!!)
         return super.dispatchTouchEvent(me)
     }
+
+    private fun convertAppIconDrawableToBitmap(context: Context, drawable: Drawable): Bitmap {
+        if (drawable is BitmapDrawable)
+            return drawable.bitmap
+        val appIconSize = if (drawable is AdaptiveIconDrawable)
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                108f,
+                context.resources.displayMetrics
+            ).toInt()
+        else getAppIconSize(context)
+        return drawable.toBitmap(appIconSize, appIconSize, Bitmap.Config.ARGB_8888)
+    }
+
+    private fun getAppIconSize(context: Context): Int {
+        val activityManager = ContextCompat.getSystemService(this, ActivityManager::class.java)!!
+        val appIconSize = try {
+            activityManager.launcherLargeIconSize
+        } catch (e: Exception) {
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                48f,
+                context.resources.displayMetrics
+            ).toInt()
+        }
+        return appIconSize
+    }
+
 
 }

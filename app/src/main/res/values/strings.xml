@@ -15,4 +15,7 @@
     <string name="bought_item">Comprato un elemento</string>
     <string name="hint_nuovo_oggetto">Nuovo oggetto</string>
     <string name="add_lista_item">Aggiungi un oggetto alla lista della spesa</string>
+    <string name="compose_shortcut_short_label1">Aggiungi</string>
+    <string name="compose_shortcut_long_label1">Aggiungi un oggetto</string>
+    <string name="compose_disabled_message1">Aggiunta non disponibile</string>
 </resources>

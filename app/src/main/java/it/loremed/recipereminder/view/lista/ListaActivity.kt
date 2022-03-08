@@ -3,6 +3,7 @@ package it.loremed.recipereminder.view.lista
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -84,6 +85,12 @@ class ListaActivity : AppCompatActivity(), SimpleGestureFilter.SimpleGestureList
         }
 
         detector = SimpleGestureFilter(this, this)
+
+        if (intent.hasExtra("isShortcut")) {
+            Log.d("SHORTCUT", "shortcut used")
+            fab.performClick()
+        }
+
     }
 
     private fun onListItemBuyClick(position: Int) {
