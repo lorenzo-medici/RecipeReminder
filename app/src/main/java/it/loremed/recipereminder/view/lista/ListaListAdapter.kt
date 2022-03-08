@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import it.loremed.recipereminder.R
 import it.loremed.recipereminder.model.lista.ItemLista
 
-class ListaListAdapter(private val onItemClicked: (position: Int) -> Unit) :
+class ListaListAdapter(
+    private val onItemBuyClicked: (position: Int) -> Unit,
+    private val onItemClicked: (position: Int) -> Unit
+) :
     ListAdapter<ItemLista, ListaListAdapter.ListaViewHolder>(ItemsComparator()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaViewHolder {
-        return ListaViewHolder.create(parent, onItemClicked)
+        return ListaViewHolder.create(parent, onItemBuyClicked, onItemClicked)
     }
 
     override fun onBindViewHolder(holder: ListaViewHolder, position: Int) {
@@ -25,7 +28,11 @@ class ListaListAdapter(private val onItemClicked: (position: Int) -> Unit) :
     }
 
 
-    class ListaViewHolder(itemView: View, private val onItemClicked: (position: Int) -> Unit) :
+    class ListaViewHolder(
+        itemView: View,
+        private val onItemBuyClicked: (position: Int) -> Unit,
+        private val onItemClicked: (position: Int) -> Unit
+    ) :
         RecyclerView.ViewHolder(itemView) {
 
         private val listaItemView: TextView = itemView.findViewById(R.id.textview_lista)
@@ -34,22 +41,26 @@ class ListaListAdapter(private val onItemClicked: (position: Int) -> Unit) :
 
         init {
             listaItemDeleteButton.setOnClickListener {
-                onItemClicked(bindingAdapterPosition)
+                onItemBuyClicked(bindingAdapterPosition)
             }
         }
 
         fun bind(text: String?) {
             listaItemView.text = text
+            listaItemView.setOnClickListener {
+                onItemClicked(bindingAdapterPosition)
+            }
         }
 
         companion object {
             fun create(
                 parent: ViewGroup,
+                onItemBuyClicked: (position: Int) -> Unit,
                 onItemClicked: (position: Int) -> Unit
             ): ListaViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recyclerview_item_lista, parent, false)
-                return ListaViewHolder(view, onItemClicked)
+                return ListaViewHolder(view, onItemBuyClicked, onItemClicked)
             }
         }
     }
