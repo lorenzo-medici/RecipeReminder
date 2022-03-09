@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecipeReminder</string>
+    <string name="app_name">DevRecipeReminder</string>
     <string name="add_ricetta">Aggiungi ricetta</string>
     <string name="hint_ricetta">Ricetta…</string>
     <string name="button_save">Salva</string>
