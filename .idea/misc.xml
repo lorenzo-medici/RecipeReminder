@@ -19,6 +19,8 @@
         <entry key="app/src/main/res/layout/add_item_popup.xml" value="0.5" />
         <entry key="app/src/main/res/layout/custom_action_bar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_alert_dialog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_lista.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_ricettario.xml" value="0.33" />
         <entry key="app/src/main/res/layout/recyclerview_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/recyclerview_item_lista.xml" value="0.25" />
         <entry key="app/src/main/res/menu/custom_action_bar.xml" value="0.2" />
