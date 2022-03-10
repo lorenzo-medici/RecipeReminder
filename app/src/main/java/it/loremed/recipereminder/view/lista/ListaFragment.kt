@@ -20,14 +20,17 @@ import it.loremed.recipereminder.viewmodel.lista.ListaViewModel
 
 class ListaFragment : Fragment() {
 
+
     private val listaViewModel: ListaViewModel by activityViewModels {
         ListaViewModel.ListaViewModelFactory((requireActivity().application as RicettaApplication).listaRepository)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_lista, container, false)
 

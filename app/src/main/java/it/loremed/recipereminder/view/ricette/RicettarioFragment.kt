@@ -31,7 +31,6 @@ class RicettarioFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Potrebbe funzionare se la Activity principale contiene il campo nella actionbar
         textViewType = requireActivity().findViewById(R.id.recipe_type_text)
     }
 
@@ -39,6 +38,7 @@ class RicettarioFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val rootView = inflater.inflate(R.layout.fragment_ricettario, container, false)
 
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.recyclerview)

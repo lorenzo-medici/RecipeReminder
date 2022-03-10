@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.ricette.MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,6 @@
         <activity
             android:name=".view.ricette.NewRicettaActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.lista.ListaActivity"
-            android:exported="true" />
         <activity
             android:name=".view.ricette.ExistingRicettaActivity"
             android:exported="false" />
