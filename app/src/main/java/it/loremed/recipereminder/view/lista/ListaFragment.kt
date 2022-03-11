@@ -18,7 +18,7 @@ import it.loremed.recipereminder.RicettaApplication
 import it.loremed.recipereminder.model.lista.ItemLista
 import it.loremed.recipereminder.viewmodel.lista.ListaViewModel
 
-class ListaFragment : Fragment() {
+class ListaFragment(private val clickFAB: Boolean) : Fragment() {
 
 
     private val listaViewModel: ListaViewModel by activityViewModels {
@@ -84,6 +84,9 @@ class ListaFragment : Fragment() {
 
         }
 
+        if (clickFAB) {
+            fab.performClick()
+        }
 
         return rootView
     }

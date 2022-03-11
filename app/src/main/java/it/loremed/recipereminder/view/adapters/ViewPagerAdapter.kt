@@ -7,7 +7,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import it.loremed.recipereminder.view.lista.ListaFragment
 import it.loremed.recipereminder.view.ricette.RicettarioFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class ViewPagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle,
+    private val clickFAB: Boolean
+) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return 2
@@ -19,7 +23,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
                 RicettarioFragment()
             }
             1 -> {
-                ListaFragment()
+                ListaFragment(clickFAB)
             }
             else -> {
                 Fragment()

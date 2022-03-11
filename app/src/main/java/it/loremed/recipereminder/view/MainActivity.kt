@@ -1,6 +1,7 @@
 package it.loremed.recipereminder.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -28,8 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         viewPager2 = findViewById(R.id.view_pager_2)
 
+        val clickFAB = intent.hasExtra("isShortcut")
 
-        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
+        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle, clickFAB)
 
         viewPager2.adapter = adapter
 
@@ -37,11 +39,36 @@ class MainActivity : AppCompatActivity() {
 
         viewPager2.registerOnPageChangeCallback(onPageChangeCallbackHandler)
 
+        if (clickFAB) {
+            Log.d("SHORTCUT", "shortcut used")
+
+            viewPager2.setCurrentItem(viewPager2.currentItem + 1, true)
+        }
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         viewPager2.unregisterOnPageChangeCallback(onPageChangeCallbackHandler)
+    }
+
+    inner class OnPageChangeCallbackHandler(private val textViewHandler: TextView) :
+        ViewPager2.OnPageChangeCallback() {
+
+        private val fadeDuration: Long = 200
+
+        override fun onPageSelected(position: Int) {
+
+            when (position) {
+                0 -> textViewHandler.animate().alpha(1.0f).duration = fadeDuration
+                1 -> {
+                    textViewHandler.animate().alpha(0.0f).duration = fadeDuration
+                    // clickFABOnShortcut()
+                }
+            }
+            Log.d("VIEWPAGER", "$position")
+            super.onPageSelected(position)
+        }
     }
 
 }
