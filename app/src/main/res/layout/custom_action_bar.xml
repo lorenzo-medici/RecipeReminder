@@ -10,13 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_gravity="start|center_vertical"
+        android:layout_gravity="start|bottom"
         android:layout_toEndOf="@+id/imageView"
-        android:gravity="start|center_vertical"
+        android:gravity="start|bottom"
         android:padding="8dp"
         android:text="@string/app_name"
         android:textColor="#ff0000"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
@@ -24,11 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="right|center_vertical"
-        android:padding="10dp"
+        android:gravity="end|bottom"
+        android:layout_gravity="end|bottom"
+        android:padding="8dp"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="18sp"
-        tools:ignore="RtlHardcoded" />
+        tools:ignore="RtlHardcoded"
+        android:textStyle="bold" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

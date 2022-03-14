@@ -15,7 +15,7 @@
         android:ellipsize="none"
         android:padding="8dp"
         android:scrollHorizontally="false"
-        android:textSize="10pt" />
+        android:textSize="@dimen/text_size_recycler_view" />
 
     <ImageButton
         android:id="@+id/imagebutton_lista"
