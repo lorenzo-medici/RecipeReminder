@@ -3,7 +3,6 @@ package it.loremed.recipereminder.view.ricette
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +63,7 @@ class RicettarioFragment : Fragment() {
             popupMenu.menuInflater.inflate(R.menu.type_choose_menu, popupMenu.menu)
             popupMenu.setOnMenuItemClickListener { item ->
 
-                Log.d("FILTERING", "Item title selected ${item.title}")
+                // Log.d("FILTERING", "Item title selected ${item.title}")
 
                 val titleString: String =
                     if (item.title.toString() == getString(R.string.all_recipe_types)) {
@@ -132,12 +131,12 @@ class RicettarioFragment : Fragment() {
 
     private fun onListItemClick(position: Int) {
 
-        Log.d("EDIT_RICETTA", "Opening new ricetta as edit ricetta position $position")
+        // Log.d("EDIT_RICETTA", "Opening new ricetta as edit ricetta position $position")
 
         // Ottenere la ricetta clickata a partire dalla posizione
         val ricettaSelezionata = ricettaViewModel.allRecipesFiltered.value?.get(position)
 
-        Log.d("EDIT_RICETTA", "ricetta da modificare $ricettaSelezionata")
+        // Log.d("EDIT_RICETTA", "ricetta da modificare $ricettaSelezionata")
 
         // Aprire la Activity e inizializzare i campi
         val intent = Intent(requireContext(), ExistingRicettaActivity::class.java)

@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 import android.graphics.drawable.AdaptiveIconDrawable
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.util.TypedValue
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
@@ -39,7 +38,7 @@ class RicettaApplication : Application() {
             ).size == 0
         ) {
 
-            Log.d("SHORTCUT", "adding shortcut")
+            // Log.d("SHORTCUT", "adding shortcut")
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("isShortcut", "true")
             intent.action = Intent.ACTION_VIEW

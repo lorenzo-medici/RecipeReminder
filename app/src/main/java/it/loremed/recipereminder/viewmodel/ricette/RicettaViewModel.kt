@@ -1,6 +1,5 @@
 package it.loremed.recipereminder.viewmodel.ricette
 
-import android.util.Log
 import androidx.lifecycle.*
 import it.loremed.recipereminder.model.ricette.Ricetta
 import it.loremed.recipereminder.model.ricette.Tipo
@@ -39,7 +38,7 @@ class RicettaViewModel(private val repository: RicettaRepository) : ViewModel() 
 
     fun setFilter(newFilter: String) {
         filter.postValue(if (newFilter != "") Tipo.fromPlural(newFilter) else null)
-        Log.d("FILTERING", "Filter $newFilter applied")
+        // Log.d("FILTERING", "Filter $newFilter applied")
     }
 
     class RicettaViewModelFactory(private val repository: RicettaRepository) :

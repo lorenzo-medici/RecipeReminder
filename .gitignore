@@ -17,3 +17,5 @@ local.properties
 /WIP_logo.png
 /WIP_logo_cropped.png
 /.idea/deploymentTargetDropDown.xml
+/app/release/output-metadata.json
+/app/release/RecipeReminder.apk
