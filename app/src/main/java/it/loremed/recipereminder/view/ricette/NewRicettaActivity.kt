@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -62,6 +63,10 @@ class NewRicettaActivity : AppCompatActivity() {
         val view = findViewById<LinearLayout>(R.id.new_ricetta_linearlayout)
 
         hideKeyboardOnOutSideTouch(view)
+
+        editRicettaName.requestFocus()
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 
     }
 
