@@ -33,6 +33,18 @@ This repository tracks my AndroidStudio project folder, you can download it and 
 
 ## Future Development
 
+### Layout issues
+
+The layouts found in activity_existing_ricetta.xml and activity_new_ricetta.xml have sizes and positions of component hardcoded.
+For example, the description field has a maximum number of lines of 13 in activity_existing_ricetta. This is because I set it to fill the screen of my smartphone if needed.
+This would of course not work at all on other phones: on smaller screens the bottom buttons would wander off the screen, on bigger screens space would be left empty at the bottom, even if a really long description was typed in.
+The solution is using relative layouts and limiting the expansion of the description field to the margin of the buttons.
+
+Another fix would be to import new_ricetta in existing_ricetta as the top part is actually the same to make future layout changes simpler.
+For the same reason, some refactoring of the NewRicettaActivity and ExistingRicettaActivity would be a good thing to avoid a lot of code repetition.
+
+### Other changes
+
 As of now, the app (and parts of the code) are written in Italian, my first language. Some code clean-up and translation would be needed to translate the strings shown to the user in English and make the code readable to most people
 Furthermore, recipe type translations would be really tricky to do because types are coded as an enum and their strings hardcoded as properties of said enums. Context managing to show different type names depending on the language is almost impossible as of now.
 
