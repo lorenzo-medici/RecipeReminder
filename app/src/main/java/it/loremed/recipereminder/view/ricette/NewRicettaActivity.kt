@@ -35,7 +35,7 @@ class NewRicettaActivity : AppCompatActivity() {
             rb.text = options[i]
             rb.id = View.generateViewId()
             rb.layoutParams = ViewGroup.LayoutParams(
-                RadioGroup.LayoutParams.MATCH_PARENT,
+                RadioGroup.LayoutParams.WRAP_CONTENT,
                 RadioGroup.LayoutParams.WRAP_CONTENT
             )
             editRicettaTipiContainer.addView(rb)
@@ -77,7 +77,7 @@ class NewRicettaActivity : AppCompatActivity() {
     }
 
     private fun hideKeyboardOnOutSideTouch(view: View) {
-        if (view !is EditText) {
+        if (view is RadioButton) {
             view.setOnTouchListener { v, _ ->
                 v.performClick()
                 hideKeyboard(view)

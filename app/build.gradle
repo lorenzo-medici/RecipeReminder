@@ -12,7 +12,7 @@ android {
         minSdk 29
         targetSdk 32
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,16 +21,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        applicationVariants.all {
-                // this method is use to rename your all apk weather
-                // it may be signed or unsigned(debug apk)
-            variant ->
-                variant.outputs.each {
-                    output ->
-                        def name = "RecipeReminder.apk"
-                        output.outputFileName = name
-                }
         }
     }
     compileOptions {
@@ -43,6 +33,7 @@ android {
 
     flavorDimensions += '1.0'
 
+    namespace 'it.loremed.recipereminder'
 }
 
 dependencies {

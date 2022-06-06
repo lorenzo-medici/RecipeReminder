@@ -19,3 +19,4 @@ local.properties
 /.idea/deploymentTargetDropDown.xml
 /app/release/output-metadata.json
 /app/release/RecipeReminder.apk
+/app/release/app-release.apk

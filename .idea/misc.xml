@@ -11,11 +11,11 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1835" />
         <entry key="app/src/main/res/drawable/ic_shortcut_icon_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_edit_ricetta.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_existing_ricetta.xml" value="0.17037037037037037" />
+        <entry key="app/src/main/res/layout/activity_existing_ricetta.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_lista_della_spesa.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_lista_spesa.xml" value="0.184375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15" />
-        <entry key="app/src/main/res/layout/activity_new_ricetta.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_new_ricetta.xml" value="0.14437944003343084" />
         <entry key="app/src/main/res/layout/add_item_popup.xml" value="0.5" />
         <entry key="app/src/main/res/layout/custom_action_bar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_alert_dialog.xml" value="0.1" />

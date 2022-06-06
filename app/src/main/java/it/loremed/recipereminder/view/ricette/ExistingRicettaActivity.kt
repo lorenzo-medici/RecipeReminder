@@ -44,7 +44,7 @@ class ExistingRicettaActivity : AppCompatActivity() {
             rb.text = options[i]
             rb.id = View.generateViewId()
             rb.layoutParams = ViewGroup.LayoutParams(
-                RadioGroup.LayoutParams.MATCH_PARENT,
+                RadioGroup.LayoutParams.WRAP_CONTENT,
                 RadioGroup.LayoutParams.WRAP_CONTENT
             )
             if (rb.text == ricettaMostrata.tipo.printable)
@@ -107,7 +107,7 @@ class ExistingRicettaActivity : AppCompatActivity() {
     }
 
     private fun hideKeyboardOnOutSideTouch(view: View) {
-        if (view !is EditText) {
+        if (view is RadioButton) {
             view.setOnTouchListener { v, _ ->
                 v.performClick()
                 hideKeyboard(view)
