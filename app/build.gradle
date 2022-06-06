@@ -38,6 +38,7 @@ android {
             applicationIdSuffix ".dev"
         }
     }
+    namespace 'it.loremed.recipereminder'
 }
 
 dependencies {

@@ -3,8 +3,6 @@
     android:id="@+id/existing_ricetta_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:theme="@style/AppTheme">
 
@@ -12,7 +10,8 @@
         android:id="@+id/nome_ricetta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="@dimen/horizontalMarginTextFields"
+        android:layout_marginVertical="@dimen/verticalMarginTextFields"
         android:hint="@string/nome_ricetta"
         android:importantForAutofill="no"
         android:inputType="textCapSentences"
@@ -22,11 +21,13 @@
     <EditText
         android:id="@+id/descrizione_ricetta"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/horizontalMarginTextFields"
+        android:layout_marginVertical="@dimen/verticalMarginTextFields"
         android:hint="@string/descrizione_ricetta"
         android:importantForAutofill="no"
         android:inputType="textMultiLine|textCapSentences"
+        android:maxLines="13"
         tools:ignore="LabelFor,TextContrastCheck" />
 
     <RadioGroup
@@ -41,8 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:clickable="true"
-            android:focusableInTouchMode="true"
             android:text="@string/tipi_di_ricetta"
             android:textSize="10pt"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
