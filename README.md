@@ -1,5 +1,9 @@
 # RecipeReminder
 
+
+<img src="https://user-images.githubusercontent.com/67294212/201318196-9a290714-7549-46fe-8ccb-e5bfb114a516.jpg" width="250"> <img src="https://user-images.githubusercontent.com/67294212/201318224-33917bd1-6f6c-405d-8321-f3a9249e3c85.jpg" width="250" hspace="10">
+
+
 This Android application is a small project I took on to learn how to create Android apps using Kotlin.
 RecipeReminder is mainly a repository of Recipes the user likes to cook and eat. Its main purpose is to order each recipe based on the last time they were cooked, from least to most recently cooked.
 
@@ -16,7 +20,11 @@ Types are unfortunately hardcoded as this is a small project.
 
 The floating buttons in the bottom right corner are used to add a new recipe and to filter by type which recipes will be shown in the main view. Please note that this does not change their order! The type selected will be shown in the top right of the screen, alongside the app name. If no type appears all saved recipes are shown.
 
+<img src="https://user-images.githubusercontent.com/67294212/201318619-72fbd9c2-10f8-42b3-abc3-08cccb9f36ef.jpg" width="250">
+
 When tapping on a new recipe in the list the view for editing it will open. Here you can freely change its type, name and description and save the changes using the first button. The second button sets the recipe's ```lastCooked``` property at the instant it is pressed. This ways it will be shown last in the list when returning to the main view. The third button deletes the recipe from the database.
+
+<img src="https://user-images.githubusercontent.com/67294212/201318789-348865e1-dea8-47ab-8f31-095f33c8d92c.jpg" width="250">
 
 ## Shopping list
 
